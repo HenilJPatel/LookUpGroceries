@@ -32,4 +32,7 @@
     <string name="email_address">Email Address</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_t1">t1</string>
+    <string name="coupon">Coupon</string>
+    <string name="search">Search</string>
+    <string name="logout">Logout</string>
 </resources>

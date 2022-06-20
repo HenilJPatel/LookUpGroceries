@@ -26,7 +26,7 @@ public class StartScreen extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartScreen.this, Homescreen.class);
+                Intent intent = new Intent(StartScreen.this, SignUp.class);
                 startActivity(intent);
             }
         });

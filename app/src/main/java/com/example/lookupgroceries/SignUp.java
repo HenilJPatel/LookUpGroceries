@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
@@ -52,16 +54,16 @@ public class SignUp extends AppCompatActivity {
                     Log.d(TAG,"CreateUserWithEmail:success");
                     FirebaseUser user= mAuth.getCurrentUser();
                     Toast.makeText(SignUp.this,"Authentication Success."+user.getEmail(),Toast.LENGTH_SHORT).show();
-                    //CreateProfile(user);
+                    CreateProfile(user);
                 }else{
-                    Log.w(TAG,"CreateUserWithEmail:success",task.getException());
+                    Log.w(TAG,"CreateUserWithEmail:failed",task.getException());
                     Toast.makeText(SignUp.this,"Authentication Failed.",Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-   /* private void CreateProfile(FirebaseUser user){
+   private void CreateProfile(FirebaseUser user){
         Customer customer=new Customer();
         txtname= ((EditText)findViewById(R.id.editName)).getText().toString().trim();
         txtContact=((EditText)findViewById(R.id.editContact)).getText().toString().trim();
@@ -77,5 +79,5 @@ public class SignUp extends AppCompatActivity {
         Toast.makeText(SignUp.this,"User Created",Toast.LENGTH_LONG).show();
         Intent intent=new Intent(SignUp.this,Homescreen.class);
         startActivity(intent);
-    }*/
+    }
 }
