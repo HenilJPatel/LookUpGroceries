@@ -17,6 +17,7 @@
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,13 +32,15 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
-        android:hint="Email Address"
+        android:hint="@string/email_address"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editContact"
-        tools:ignore="Autofill,HardcodedText,MissingConstraints" />
+        tools:ignore="TextContrastCheck"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editPassword"
@@ -47,13 +50,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
-        android:hint="Create Password"
+        android:hint="@string/create_password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editUsername"
-        tools:ignore="Autofill,MissingConstraints" />
+        tools:ignore="Autofill,TextContrastCheck" />
 
     <EditText
         android:id="@+id/editContact"
@@ -62,14 +66,16 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Contact Number"
+        android:hint="@string/contact_number"
         android:inputType="number"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editName"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textView"
@@ -78,9 +84,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:autoText="true"
         android:fontFamily="sans-serif-black"
-        android:text="Healthy Living"
+        android:text="@string/app_name"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#EF0A0A"
@@ -90,8 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
@@ -101,12 +105,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
-        android:text="SIGNUP"
+        android:text="@string/signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editConfirmPassword"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/editConfirmPassword" />
 
     <EditText
         android:id="@+id/editUsername"
@@ -116,13 +119,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
-        android:hint="Create Username"
+        android:hint="@string/create_username"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editEmail"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editConfirmPassword"
@@ -131,13 +135,15 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Confirm Password"
+        android:hint="@string/confirm_password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPassword"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

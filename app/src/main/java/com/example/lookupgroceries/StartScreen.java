@@ -34,7 +34,8 @@ public class StartScreen extends AppCompatActivity {
         guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartScreen.this, Homescreen.class);
+                Intent intent = new Intent(getApplicationContext(), Homescreen.class);
+                intent.putExtra("handshake","guest");
                 startActivity(intent);
             }
         });

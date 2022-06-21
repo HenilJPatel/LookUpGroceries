@@ -4,21 +4,61 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Homescreen extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+    private String str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
+        mAuth= FirebaseAuth.getInstance();
+        Intent intent=getIntent();
+        str= intent.getStringExtra("handshake");
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
 
-        /*Toolbar toolbar=findViewById(R.id.hometoolbar);
-        setSupportActionBar(toolbar);*/
+        FirebaseUser user=mAuth.getCurrentUser();
+        if(user==null){
+            Toast.makeText(this,str,Toast.LENGTH_LONG);
+            if(str=="guest"){
+                getUsername("guest");
+                Home();
+            }
+            /*else {
+                Intent intent1 = new Intent(Homescreen.this, StartScreen.class);
+                startActivity(intent1);
+            }*/
+        }else
+        {
+            getUsername();
+            Home();
+        }
+    }
+
+    private void Home(){
         Button btnSearch= findViewById(R.id.btnSearchMenu);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +75,45 @@ public class Homescreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button logout = (Button) findViewById(R.id.btnlogout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent intent = new Intent(Homescreen.this, StartScreen.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void getUsername(){
+        DatabaseReference db= FirebaseDatabase.getInstance().getReference("Users");
+        Query query=db.child(mAuth.getUid()).child("LoginDetails").child("name");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                double rand_dub1 = ThreadLocalRandom.current().nextDouble();
+                String s;
+                if(rand_dub1<0.3){
+                    s="Hello, ";
+                }else if(rand_dub1<0.6){
+                    s="Hi, ";
+                }else{
+                    s="Greetings, ";
+                }
+                setTitle(s+(snapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        // Toast.makeText(Homescreen.this,String.valueOf(mAuth.getUid()),Toast.LENGTH_SHORT).show();
+    }
+    private void getUsername(String str){
+        String s;
+        s="Welcome "+str;
+        setTitle(s);
     }
 }
