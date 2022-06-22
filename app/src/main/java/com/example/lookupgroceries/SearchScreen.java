@@ -23,9 +23,9 @@ public class SearchScreen extends AppCompatActivity {
         };
         MyListData[] Data32808 = new MyListData[]{
                 new MyListData("25OFF", R.drawable.ic_baseline_local_offer_24),
-                new MyListData("WELCOME2", R.drawable.ic_baseline_local_offer_24),
-                new MyListData("Publix", R.drawable.ic_baseline_local_offer_24),
-                new MyListData("Walmart", R.drawable.ic_baseline_local_offer_24),
+                new MyListData("DIWALI25", R.drawable.ic_baseline_local_offer_24),
+                new MyListData("Lotte Plaza Market", R.drawable.ic_baseline_local_offer_24),
+                new MyListData("Walmart Supercenter", R.drawable.ic_baseline_local_offer_24),
         };
         Button btnSearch=findViewById(R.id.btnSearchRequest);
         btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +33,9 @@ public class SearchScreen extends AppCompatActivity {
             public void onClick(View v) {
                 boolean search=false;
                 TextView txtSearch=findViewById(R.id.txtSearch);
+                String st= txtSearch.getText().toString().trim();
+                boolean result = st.matches("[0-9]+");
+                //if(result)
                 if(txtSearch.getText().toString().trim().equals("32808")){
                     Recycler(Data32808);
                 }else if(txtSearch.getText().toString().trim().equals("32804")){

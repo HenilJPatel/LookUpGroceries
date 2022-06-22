@@ -42,7 +42,7 @@ public class Homescreen extends AppCompatActivity {
 
         FirebaseUser user=mAuth.getCurrentUser();
         if(user==null){
-            Toast.makeText(this,str,Toast.LENGTH_LONG);
+            Toast.makeText(this,str,Toast.LENGTH_LONG).show();
             if(str=="guest"){
                 getUsername("guest");
                 Home();

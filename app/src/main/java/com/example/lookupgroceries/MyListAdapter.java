@@ -1,5 +1,6 @@
 package com.example.lookupgroceries;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder>{
@@ -33,6 +35,9 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(),CouponDisplay.class);
+                intent.putExtra("Code",myListData.getDescription());
+                view.getContext().startActivity(intent);
                 Toast.makeText(view.getContext(),"click on item: "+myListData.getDescription(),Toast.LENGTH_LONG).show();
             }
         });

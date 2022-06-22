@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LookUpGroceries">
         <activity
+            android:name="CouponDisplay"
+            android:exported="false" />
+        <activity
             android:name=".Coupons"
             android:exported="false" />
         <activity
             android:name=".SearchScreen"
-            android:exported="false" />
-        <activity
-            android:name=".CouponScreen"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
